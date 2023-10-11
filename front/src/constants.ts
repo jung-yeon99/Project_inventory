@@ -8,7 +8,7 @@ export const COMPONENT = 'component';
 
 export const SIDEBAR_ITEMS = [
   {
-    id: shortid.generate(),
+    id: shortid.generate(), //shortid = 무작위 숫자,문자열 생성
     type: SIDEBAR_ITEM,
     component: {
       type: 'bookmark',

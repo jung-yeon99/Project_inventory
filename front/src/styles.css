@@ -2,8 +2,12 @@ html,
 body {
   margin: 0;
   padding: 0;
-
   overflow: hidden;
+}
+
+p {
+  text-align: center;
+  color: white;
 }
 
 .body {
@@ -14,24 +18,28 @@ body {
 
 .sideBar {
   flex: 0 0 1;
-  width: 100px;
+  width: 180px;
   padding: 10px;
   border-right: 1px solid #111;
   border-radius: 3px;
-  height: 80vh;
+  height: 100vh;
   background: #222121;
 }
 
 .sideBarItem {
   border: none;
-  border-radius: 3px;
-  width: 100px;
+  border-radius: 10px;
+  width: 140px;
   height: 12px;
   text-align: center;
-  font-size: 0.5rem;
-  padding: 10px;
-  margin-top: 10px;
+  font-size: 1rem;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
   background: #f6c54d;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
 
 .page {
@@ -44,7 +52,7 @@ body {
 
 .dropZone {
   flex: 0 0 auto;
-  height: 30px;
+  height: 10px;
   transition: 200ms all;
 }
 
@@ -68,30 +76,34 @@ body {
 }
 
 .component {
-  height: 60px;
-  padding: 10px;
+  height: 280px;
   background: #454343;
+  margin-top: -8px;
 }
 
 .column {
   border: 1px solid #222121;
   flex: 1 1 100%;
-  padding: 10px;
+  /* padding: 10px; */
   transition: 500ms all;
+  height: 300px;
+  width: 300px;
 }
 
 .columns {
   display: flex;
-  padding: 20px 0;
+  /* padding: 20px 0; */
 }
 
 .columnContainer {
   display: flex;
 }
-
+.column-id {
+  display: none;
+}
 .base {
-  /* padding: 0.5rem 1rem; */
-  background-color: #454343;
+  /* 큰 gridlayer / row 들 */
+  background-color: #222121; /*#454343*/
   border-radius: 10px;
   cursor: move;
 }
@@ -101,12 +113,12 @@ body {
   background-color: #222121;
   border-radius: 10px;
   text-align: center;
-  padding-top: 5px;
+  /* padding-top: 5px; */
   color: white;
 }
 
 .trashDropZone {
-  position: relative;
+  /* position: relative;
   text-align: center;
   padding: 20px 0;
   margin: 0 auto;
@@ -116,6 +128,20 @@ body {
   color: white;
   border-radius: 10px;
   display: flex;
+  align-items: center;
+  justify-content: center; */
+  border: none;
+  border-radius: 10px;
+  width: 140px;
+  height: 12px;
+  text-align: center;
+  font-size: 1rem;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40vh;
+  color: white;
+  background: #454343;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
 }

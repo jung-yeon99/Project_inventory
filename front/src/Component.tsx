@@ -24,7 +24,6 @@ const Component = ({ data, components, path }) => {
   drag(ref);
 
   const component = components[data.id];
-
   return (
     <div
       ref={ref}
@@ -33,6 +32,7 @@ const Component = ({ data, components, path }) => {
     >
       <div>{data.id}</div>
       <div>{component.content}</div>
+      <div>{component.content2}</div>
     </div>
   );
 };

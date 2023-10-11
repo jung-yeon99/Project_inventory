@@ -1,5 +1,4 @@
 /*드롭 영역을 나타내는 컴포넌트 , 아이템을 놓을 수 있는 영역을 생성하고 관리*/
-import React from 'react';
 import classNames from 'classnames';
 import { useDrop } from 'react-dnd';
 import { COMPONENT, SIDEBAR_ITEM, ROW, COLUMN } from './constants';
@@ -12,7 +11,12 @@ const DropZone = ({ data, onDrop, isLast, className }) => {
     drop: (item, monitor) => {
       onDrop(data, item);
     },
+
     canDrop: (item, monitor) => {
+      // if (isLast) {
+      //   // isLast가 true일 때 항상 드래그 앤 드롭을 막음
+      //   return false;
+      // }
       const dropZonePath = data.path;
       const splitDropZonePath = dropZonePath.split('-');
       const itemPath = item.path;
@@ -59,7 +63,6 @@ const DropZone = ({ data, onDrop, isLast, className }) => {
           if (nextDropZoneIndex === currentDropZoneIndex) return false;
         }
       }
-
       return true;
     },
     collect: (monitor) => ({

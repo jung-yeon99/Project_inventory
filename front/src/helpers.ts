@@ -200,7 +200,7 @@ export const handleMoveSidebarComponentIntoParent = (
     case 1: {
       newLayoutStructure = {
         type: ROW,
-        id: shortid.generate(),
+        // id: shortid.generate(),
         children: [{ type: COLUMN, id: shortid.generate(), children: [item] }],
       };
       break;
@@ -208,7 +208,7 @@ export const handleMoveSidebarComponentIntoParent = (
     case 2: {
       newLayoutStructure = {
         type: COLUMN,
-        id: shortid.generate(),
+        // id: shortid.generate(),
         children: [item],
       };
       break;

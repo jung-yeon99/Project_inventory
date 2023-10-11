@@ -1,4 +1,4 @@
-/*애플리케이션의 주요 컨테이너 컴포넌트로, 초기 레이아웃 및 컴포넌트 상태를 설정하고 드래그 앤 드롭 이벤트를 처리*/
+/*주요 컨테이너 컴포넌트로, 초기 레이아웃 및 컴포넌트 상태를 설정하고 드래그 앤 드롭 이벤트를 처리*/
 import React, { useState, useCallback } from 'react';
 
 import DropZone from './DropZone';
@@ -40,14 +40,14 @@ const Container = () => {
 
       const newItem = { id: item.id, type: item.type };
       if (item.type === COLUMN) {
-        newItem.children = item.children;
+        newItem.children = item.children; //새로운 아이템 생성
       }
 
       // sidebar into
       if (item.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
         const newComponent = {
-          id: shortid.generate(),
+          id: shortid.generate(), //TODO: 새로운 컴포넌트 생성 => 이부분 유의깊게 볼것
           ...item.component,
         };
         const newItem = {
@@ -152,6 +152,12 @@ const Container = () => {
             isLast
           />
         </div>
+      </div>
+      <div className='sideBar'>
+        <p> 적용중인 위젯 </p>
+        {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
+          <SideBarItem key={sideBarItem.id} data={sideBarItem} />
+        ))}
 
         <TrashDropZone
           data={{
@@ -159,11 +165,6 @@ const Container = () => {
           }}
           onDrop={handleDropToTrashBin}
         />
-      </div>
-      <div className='sideBar'>
-        {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
-          <SideBarItem key={sideBarItem.id} data={sideBarItem} />
-        ))}
       </div>
     </div>
   );
