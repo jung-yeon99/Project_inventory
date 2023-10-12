@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useDrag } from 'react-dnd';
-import { ROW } from './constants';
+import { ROW, STUDY_PLAN } from './constants';
 import DropZone from './DropZone';
 import Column from './Column';
 
@@ -19,7 +19,6 @@ const Row = ({ data, components, handleDrop, path }) => {
       isDragging: monitor.isDragging(),
     }),
   });
-
   const opacity = isDragging ? 0 : 1;
   drag(ref);
 
@@ -34,9 +33,25 @@ const Row = ({ data, components, handleDrop, path }) => {
       />
     );
   };
+  const handleDropAllowed = (item, path) => {
+    // 유효한 컴포넌트 유형만 허용
+    if (item.type === STUDY_PLAN) {
+      handleDrop(item, path);
+    }
+  };
 
   return (
-    <div ref={ref} style={{ ...style, opacity }} className='base draggable row'>
+    <div
+      ref={ref}
+      style={{ ...style, opacity }}
+      className='base draggable row'
+      onDrop={() => {
+        handleDropAllowed(item, path);
+      }}
+      onDragOver={(e) => {
+        e.preventDefault();
+      }}
+    >
       {data.id}
       <div className='columns'>
         {data.children.map((column, index) => {

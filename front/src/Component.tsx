@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useDrag } from 'react-dnd';
 import { COMPONENT } from './constants';
+import Button from './Button';
 
 const style = {
   border: 'none',
@@ -24,6 +25,13 @@ const Component = ({ data, components, path }) => {
   drag(ref);
 
   const component = components[data.id];
+
+  //특정 컴포넌트에만 나오게 컴포넌트가 나오도록 수정
+  let button = null;
+
+  if (component.type === 'Profile') {
+    button = <Button />;
+  }
   return (
     <div
       ref={ref}
@@ -32,7 +40,7 @@ const Component = ({ data, components, path }) => {
     >
       <div>{data.id}</div>
       <div>{component.content}</div>
-      <div>{component.content2}</div>
+      <div>{button}</div>
     </div>
   );
 };

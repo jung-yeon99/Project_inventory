@@ -47,17 +47,21 @@ const initialData = {
     },
   ],
   components: {
-    component0: { id: 'component0', type: 'bookmark', content: '북마크' },
+    component0: { id: 'component0', type: 'Bookmark', content: '북마크' },
     component1: {
       id: 'component1',
-      type: 'profile',
+      type: 'Profile',
       content: '프로필',
     },
-    component2: { id: 'component2', type: 'study', content: '스터디 일정' },
-    component3: { id: 'component3', type: 'write', content: '내가 작성한 글' },
+    component2: { id: 'component2', type: 'StudyPlan', content: '스터디 일정' },
+    component3: {
+      id: 'component3',
+      type: 'WrittenPost',
+      content: '내가 작성한 글',
+    },
     component4: {
       id: 'component4',
-      type: 'participate',
+      type: 'StudyList',
       content: '내가 참여한 스터디',
     },
   },

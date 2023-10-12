@@ -5,13 +5,14 @@ export const SIDEBAR_ITEM = 'sidebarItem';
 export const ROW = 'row';
 export const COLUMN = 'column';
 export const COMPONENT = 'component';
+export const STUDY_PLAN = 'StudyPlan';
 
 export const SIDEBAR_ITEMS = [
   {
     id: shortid.generate(), //shortid = 무작위 숫자,문자열 생성
     type: SIDEBAR_ITEM,
     component: {
-      type: 'bookmark',
+      type: 'Bookmark',
       content: '북마크',
     },
   },
