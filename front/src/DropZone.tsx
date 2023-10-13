@@ -13,19 +13,20 @@ const DropZone = ({ data, onDrop, isLast, className }) => {
     },
 
     canDrop: (item, monitor) => {
-      // if (isLast) {
-      //   // isLast가 true일 때 항상 드래그 앤 드롭을 막음
-      //   return false;
-      // }
+      if (isLast) {
+        // isLast가 true일 때 항상 드래그 앤 드롭을 막음
+        return false;
+      }
       const dropZonePath = data.path;
       const splitDropZonePath = dropZonePath.split('-');
       const itemPath = item.path;
 
       // sidebar items can always be dropped anywhere
       if (!itemPath) {
-        // if (data.childrenCount >= 3) {
-        //  return false;
-        // }
+        if (data.childrenCount >= 2) {
+          //최대 배치할 수 있는 컴포넌트 수 2개로 조절
+          return false;
+        }
         return true;
       }
 
@@ -37,8 +38,8 @@ const DropZone = ({ data, onDrop, isLast, className }) => {
       const diffRow = dropZonePathRowIndex !== itemPathRowIndex;
       if (
         diffRow &&
-        splitDropZonePath.length === 2 &&
-        data.childrenCount >= 3
+        splitDropZonePath.length === 1 &&
+        data.childrenCount >= 2
       ) {
         return false;
       }

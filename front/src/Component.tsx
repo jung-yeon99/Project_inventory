@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { useDrag } from 'react-dnd';
-import { COMPONENT } from './constants';
+import { COMPONENT, SIDEBAR_ITEMS } from './constants';
 import Button from './Button';
+import SideBarItem from './SideBarItem';
 
 const style = {
   border: 'none',
@@ -10,8 +11,10 @@ const style = {
   backgroundColor: '#222121',
   cursor: 'move',
 };
+
 const Component = ({ data, components, path }) => {
   const ref = useRef(null);
+  const component = components[data.id];
 
   const [{ isDragging }, drag] = useDrag({
     type: COMPONENT,
@@ -20,11 +23,11 @@ const Component = ({ data, components, path }) => {
       isDragging: monitor.isDragging(),
     }),
   });
-
+  if (SIDEBAR_ITEMS[0].component.type === component.type) {
+    console.log('이미 있는 위젯 입니다!');
+  }
   const opacity = isDragging ? 0 : 1;
   drag(ref);
-
-  const component = components[data.id];
 
   //특정 컴포넌트에만 나오게 컴포넌트가 나오도록 수정
   let button = null;
@@ -32,6 +35,7 @@ const Component = ({ data, components, path }) => {
   if (component.type === 'Profile') {
     button = <Button />;
   }
+  // console.log(SIDEBAR_ITEMS[0].component.type);
   return (
     <div
       ref={ref}

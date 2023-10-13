@@ -22,10 +22,30 @@ const Container = () => {
   const [layout, setLayout] = useState(initialLayout);
   const [components, setComponents] = useState(initialComponents);
 
+  // const handleDropToTrashBin = useCallback(
+  //   (dropZone, item) => {
+  //     const splitItemPath = item.path.split('-');
+  //     setLayout(handleRemoveItemFromLayout(layout, splitItemPath));
+  //   },
+  //   [layout]
+  // );
   const handleDropToTrashBin = useCallback(
     (dropZone, item) => {
       const splitItemPath = item.path.split('-');
-      setLayout(handleRemoveItemFromLayout(layout, splitItemPath));
+      const newLayout = handleRemoveItemFromLayout(layout, splitItemPath);
+
+      // 1개만 남도록 조절
+      const remainingComponentsCount = newLayout.reduce(
+        (count, row) => count + row.children.length,
+        0
+      );
+
+      if (remainingComponentsCount === 1) {
+        // 1개 삭제 불가 알림 설정
+        alert('1개 남은 위젯의 경우 삭제 불가합니다.');
+      } else {
+        setLayout(newLayout);
+      }
     },
     [layout]
   );
